@@ -7,18 +7,21 @@ import scenarios.helpers.BaseTest;
 
 public class ResetTest extends BaseTest {
 
-    @Test()
-    public void checkInputFieldLeftTest() throws InterruptedException {
-        mainPage.setValue("1", "1");
-        mainPage.reset();
-        Assert.assertNotEquals("1", mainPage.checkInputFieldLeft());
+    @DataProvider(name = "testData")
+    public static Object[][] testData() {
+        return new Object[][] {
+                {" ", "2"},
+                {"2.1", ""},
+                {"1", "2.00"}
+        };
     }
 
-    @Test()
-    public void checknIputFieldRightTest() throws InterruptedException {
-        mainPage.setValue("1", "1");
+    @Test(dataProvider = "testData")
+    public void checkInputFieldResetTest(String firstValue, String secondValue) throws InterruptedException {
+        mainPage.setValue(firstValue, secondValue);
         mainPage.reset();
-        Assert.assertNotEquals("1", mainPage.checknIputFieldRight());
+        Assert.assertEquals("", mainPage.checkInputFieldLeft());
+        Assert.assertEquals("", mainPage.checkInputFieldLeft());
     }
 }
 

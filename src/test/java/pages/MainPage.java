@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.ArrayList;
+
 public class MainPage extends BasePage {
 
     By additionButton = By.id("additionButton");
@@ -50,9 +52,26 @@ public class MainPage extends BasePage {
         clickElement(resetButton);
     }
 
-    public String checkResult(){
-        String result = getText(resultTextView);
-        return result;
+    public ArrayList checkResult(){
+        String appResult = getText(resultTextView);
+        String regExp = "[+, =, \\s]";
+        String[] result = appResult.split(regExp);
+
+        ArrayList finalResult = new ArrayList();
+
+        for(int i = 0; i < result.length; i++){
+            if (!result[i].equals("")) {
+                String d = result[i];
+                finalResult.add(d);
+            }
+        }
+
+        return finalResult;
+    }
+
+    public String checkError(){
+        String error = getText(resultTextView);
+        return error;
     }
 
     public String checkInputFieldLeft(){
