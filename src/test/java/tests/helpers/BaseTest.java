@@ -1,7 +1,6 @@
-package scenarios.helpers;
+package tests.helpers;
 
 import io.appium.java_client.android.AndroidDriver;
-import org.junit.Before;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

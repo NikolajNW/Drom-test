@@ -1,27 +1,26 @@
-package scenarios;
+package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import scenarios.helpers.BaseTest;
+import tests.helpers.BaseTest;
 
 import java.util.ArrayList;
 
-public class AdditionTest extends BaseTest {
+public class SubstractTest extends BaseTest {
 
     @DataProvider(name = "testData")
     public static Object[][] validValue() {
         return new Object[][] {
-                {"2", "2", "4.00"},
-                {"2.1", "2.0", "4.10"},
-                {"16899957", "1", "99999991"}
+                {"2", "1", "1.00"},
+                {"2", "3", "-1.00"},
         };
     }
 
     @Test(dataProvider = "testData")
-    public void additionTest(String firstValue, String secondValue, String result) throws InterruptedException {
+    public void substractTest(String firstValue, String secondValue, String result) throws InterruptedException {
         mainPage.setValue(firstValue, secondValue);
-        mainPage.summOperation();
+        mainPage.subtractOperation();
         ArrayList appResult  = mainPage.checkResult();
         Assert.assertEquals(result, appResult.get(2));
     }
@@ -36,10 +35,10 @@ public class AdditionTest extends BaseTest {
     }
 
     @Test(dataProvider = "testDataError")
-    public void additionErrorTest(String firstValue, String secondValue, String result) throws InterruptedException {
+    public void substractErrorTest(String firstValue, String secondValue, String result) throws InterruptedException {
         mainPage.setValue(firstValue, secondValue);
-        mainPage.summOperation();
-        Assert.assertEquals(result, mainPage.checkError());
+        mainPage.subtractOperation();
+        Assert.assertNotEquals(result, mainPage.checkError());
     }
 }
 

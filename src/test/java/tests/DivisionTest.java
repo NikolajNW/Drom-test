@@ -1,26 +1,29 @@
-package scenarios;
+package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import scenarios.helpers.BaseTest;
+import tests.helpers.BaseTest;
 
 import java.util.ArrayList;
 
-public class SubstractTest extends BaseTest {
+public class DivisionTest extends BaseTest {
 
     @DataProvider(name = "testData")
-    public static Object[][] validValue() {
+    public static Object[][] valideValue() {
         return new Object[][] {
-                {"2", "1", "1.00"},
-                {"2", "3", "-1.00"},
+                {"2", "2", "1.00"},
+                {"2.1", "2.0", "1.05"},
+                {"0", "1", "0.00"},
+                {"2", "4", "0.50"},
+                {"1", "0", "Infinity"},
         };
     }
 
     @Test(dataProvider = "testData")
-    public void substractTest(String firstValue, String secondValue, String result) throws InterruptedException {
+    public void divisionTest(String firstValue, String secondValue, String result) throws InterruptedException {
         mainPage.setValue(firstValue, secondValue);
-        mainPage.subtractOperation();
+        mainPage.divisionOperation();
         ArrayList appResult  = mainPage.checkResult();
         Assert.assertEquals(result, appResult.get(2));
     }
@@ -35,10 +38,10 @@ public class SubstractTest extends BaseTest {
     }
 
     @Test(dataProvider = "testDataError")
-    public void substractErrorTest(String firstValue, String secondValue, String result) throws InterruptedException {
+    public void divisionErrorTest(String firstValue, String secondValue, String result) throws InterruptedException {
         mainPage.setValue(firstValue, secondValue);
-        mainPage.subtractOperation();
-        Assert.assertNotEquals(result, mainPage.checkError());
+        mainPage.divisionOperation();
+        Assert.assertEquals(result, mainPage.checkError());
     }
 }
 

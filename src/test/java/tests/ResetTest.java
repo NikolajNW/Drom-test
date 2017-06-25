@@ -1,9 +1,9 @@
-package scenarios;
+package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import scenarios.helpers.BaseTest;
+import tests.helpers.BaseTest;
 
 public class ResetTest extends BaseTest {
 
