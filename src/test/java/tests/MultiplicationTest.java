@@ -40,8 +40,10 @@ public class MultiplicationTest extends BaseTest {
         Assert.assertEquals(mainPage.checkError(), result);
     }
 
+    /**Вынес в отдельный тест. Вероятней всего из за тестового окружения, слабое железо, во время установки значения
+     * для второго параметра появляется ссылка долго отрабатывает анимация ссылки "paste" которая перекрывает кнопку "*"*/
     @Test
-    public void multiplicationOperationErrorNullSecondParamentrTest(){
+    public void multiplicationOperationErrorNullSecondParameterTest(){
         mainPage.setLeftParamenter("4");
         mainPage.multiplicationOperation();
         Assert.assertEquals(mainPage.checkError(), "Please, fill the input fields correctly");
