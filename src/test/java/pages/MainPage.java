@@ -32,6 +32,10 @@ public class MainPage extends BasePage {
         sendKeys(inputFieldRight, Second);
     }
 
+    public void setLeftParamenter(String first){
+        sendKeys(inputFieldLeft, first);
+    }
+
     public void summOperation(){
         clickElement(additionButton);
     }
@@ -54,7 +58,7 @@ public class MainPage extends BasePage {
 
     public ArrayList checkResult(){
         String appResult = getText(resultTextView);
-        String regExp = "[+, =, *, -, //,\\s]";
+        String regExp = "[-, +, =, *, //,\\s]";
         String[] result = appResult.split(regExp);
 
         ArrayList finalResult = new ArrayList();

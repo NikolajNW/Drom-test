@@ -25,7 +25,7 @@ public class DivisionTest extends BaseTest {
         mainPage.setValue(firstValue, secondValue);
         mainPage.divisionOperation();
         ArrayList appResult  = mainPage.checkResult();
-        Assert.assertEquals(result, appResult.get(2));
+        Assert.assertEquals(appResult.get(2), result);
     }
 
     @DataProvider(name = "testDataError")
@@ -41,7 +41,7 @@ public class DivisionTest extends BaseTest {
     public void divisionErrorTest(String firstValue, String secondValue, String result) throws InterruptedException {
         mainPage.setValue(firstValue, secondValue);
         mainPage.divisionOperation();
-        Assert.assertEquals(result, mainPage.checkError());
+        Assert.assertEquals(mainPage.checkError(), result);
     }
 }
 

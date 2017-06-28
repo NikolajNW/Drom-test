@@ -22,14 +22,13 @@ public class MultiplicationTest extends BaseTest {
         mainPage.setValue(firstValue, secondValue);
         mainPage.multiplicationOperation();
         ArrayList appResult  = mainPage.checkResult();
-        Assert.assertEquals(result, appResult.get(2));
+        Assert.assertEquals(appResult.get(2), result);
     }
 
     @DataProvider(name = "testDataError")
     public static Object[][] invalidValue() {
         return new Object[][] {
-                {"4", " ", "Please, fill the input fields correctly"},
-                {" ", "2", "Please, fill the input fields correctly"},
+                {"", "2", "Please, fill the input fields correctly"},
                 {" ", " ", "Please, fill the input fields correctly"}
         };
     }
@@ -38,7 +37,14 @@ public class MultiplicationTest extends BaseTest {
     public void multiplicationOperationErrorTest(String firstValue, String secondValue, String result) throws InterruptedException {
         mainPage.setValue(firstValue, secondValue);
         mainPage.multiplicationOperation();
-        Assert.assertNotEquals(result, mainPage.checkError());
+        Assert.assertEquals(mainPage.checkError(), result);
+    }
+
+    @Test
+    public void multiplicationOperationErrorNullSecondParamentrTest(){
+        mainPage.setLeftParamenter("4");
+        mainPage.multiplicationOperation();
+        Assert.assertEquals(mainPage.checkError(), "Please, fill the input fields correctly");
     }
 }
 

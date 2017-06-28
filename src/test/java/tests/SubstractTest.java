@@ -21,8 +21,8 @@ public class SubstractTest extends BaseTest {
     public void substractTest(String firstValue, String secondValue, String result) throws InterruptedException {
         mainPage.setValue(firstValue, secondValue);
         mainPage.subtractOperation();
-        ArrayList appResult  = mainPage.checkResult();
-        Assert.assertEquals(result, appResult.get(2));
+        ArrayList appResult = mainPage.checkResult();
+        Assert.assertEquals(appResult.get(2), result);
     }
 
     @DataProvider(name = "testDataError")
@@ -38,7 +38,7 @@ public class SubstractTest extends BaseTest {
     public void substractErrorTest(String firstValue, String secondValue, String result) throws InterruptedException {
         mainPage.setValue(firstValue, secondValue);
         mainPage.subtractOperation();
-        Assert.assertNotEquals(result, mainPage.checkError());
+        Assert.assertEquals(mainPage.checkError(), result);
     }
 }
 

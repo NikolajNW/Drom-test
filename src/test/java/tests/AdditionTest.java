@@ -23,7 +23,7 @@ public class AdditionTest extends BaseTest {
         mainPage.setValue(firstValue, secondValue);
         mainPage.summOperation();
         ArrayList appResult  = mainPage.checkResult();
-        Assert.assertEquals(result, appResult.get(2));
+        Assert.assertEquals(appResult.get(2), result);
     }
 
     @DataProvider(name = "testDataError")
@@ -39,7 +39,7 @@ public class AdditionTest extends BaseTest {
     public void additionErrorTest(String firstValue, String secondValue, String result) throws InterruptedException {
         mainPage.setValue(firstValue, secondValue);
         mainPage.summOperation();
-        Assert.assertEquals(result, mainPage.checkError());
+        Assert.assertEquals(mainPage.checkError(), result);
     }
 }
 

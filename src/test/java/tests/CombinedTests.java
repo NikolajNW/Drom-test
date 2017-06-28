@@ -13,13 +13,13 @@ public class CombinedTests extends BaseTest {
         mainPage.setValue("2", "3");
         mainPage.summOperation();
         ArrayList appResult  = mainPage.checkResult();
-        Assert.assertEquals("2.00", appResult.get(0));
-        Assert.assertEquals("3.00", appResult.get(1));
-        Assert.assertEquals("5.00", appResult.get(2));
+        Assert.assertEquals(appResult.get(0), "2.00");
+        Assert.assertEquals(appResult.get(1), "3.00");
+        Assert.assertEquals(appResult.get(2), "5.00");
 
         mainPage.reset();
-        Assert.assertEquals("", mainPage.checkInputFieldLeft());
-        Assert.assertEquals("", mainPage.checkInputFieldLeft());
+        Assert.assertEquals(mainPage.checkInputFieldLeft(), "");
+        Assert.assertEquals(mainPage.checkInputFieldLeft(), "");
     }
 
     @Test()
@@ -27,15 +27,15 @@ public class CombinedTests extends BaseTest {
         mainPage.setValue("2", "2");
         mainPage.multiplicationOperation();
         ArrayList appResult1  = mainPage.checkResult();
-        Assert.assertEquals("2.00", appResult1.get(0));
-        Assert.assertEquals("2.00", appResult1.get(1));
-        Assert.assertEquals("4.00", appResult1.get(2));
+        Assert.assertEquals(appResult1.get(0), "2.00");
+        Assert.assertEquals(appResult1.get(1), "2.00");
+        Assert.assertEquals(appResult1.get(2), "4.00");
 
         mainPage.divisionOperation();
         ArrayList appResult2  = mainPage.checkResult();
-        Assert.assertEquals("2.00", appResult2.get(0));
-        Assert.assertEquals("2.00", appResult2.get(1));
-        Assert.assertEquals("1.00", appResult2.get(2));
+        Assert.assertEquals(appResult2.get(0), "2.00");
+        Assert.assertEquals(appResult2.get(1), "2.00");
+        Assert.assertEquals(appResult2.get(2), "1.00");
     }
 }
 

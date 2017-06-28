@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 import pages.MainPage;
 import support.ReadProperty;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -21,7 +22,7 @@ public class BaseTest{
     private String platformName = ReadProperty.property("platformName");
     private String platformVersion = ReadProperty.property("platformVersion");
     private String deviceName = ReadProperty.property("deviceName");
-    private String app = ReadProperty.property("app");
+    private String appName = ReadProperty.property("appName");
     private String url = ReadProperty.property("url");
 
     @BeforeClass
@@ -34,6 +35,10 @@ public class BaseTest{
     public void tearDown() throws Exception {
         driver.quit();
     }
+
+    private File classpathRoot = new File(System.getProperty("user.dir"));
+    private File appDir = new File(classpathRoot, "/apps/");
+    private File app = new File(appDir, appName);
 
     protected void prepareAndroidForAppium() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();

@@ -20,8 +20,8 @@ public class ResetTest extends BaseTest {
     public void checkInputFieldResetTest(String firstValue, String secondValue) throws InterruptedException {
         mainPage.setValue(firstValue, secondValue);
         mainPage.reset();
-        Assert.assertEquals("", mainPage.checkInputFieldLeft());
-        Assert.assertEquals("", mainPage.checkInputFieldLeft());
+        Assert.assertEquals(mainPage.checkInputFieldLeft(), "");
+        Assert.assertEquals(mainPage.checkInputFieldLeft(), "");
     }
 }
 
